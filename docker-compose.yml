@@ -1,0 +1,22 @@
+version: '3.9'
+
+services:
+  mariadb:
+    image: mariadb
+    container_name: dev-db
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      MARIADB_USER: ${DB_USER}
+      MARIADB_PASSWORD: ${DB_PASSWD}
+      MARIADB_ROOT_PASSWORD: ${DB_PASSWD_ROOT}
+    volumes:
+      - ./data/:/var/lib/mysql:rw
+    networks:
+      - devnet
+    ports:
+      - 3306:3306
+    
+networks:
+  devnet:
+    name: devnet
