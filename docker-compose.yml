@@ -7,9 +7,11 @@ services:
     restart: unless-stopped
     env_file: .env
     environment:
+      MARIADB_DATABASE: ${DB_NAME}
       MARIADB_USER: ${DB_USER}
       MARIADB_PASSWORD: ${DB_PASSWD}
       MARIADB_ROOT_PASSWORD: ${DB_PASSWD_ROOT}
+      MARIADB_INITDB_SKIP_TZINFO: ${DB_TZ}
     volumes:
       - ./data/:/var/lib/mysql:rw
     networks:
