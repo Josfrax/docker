@@ -20,6 +20,23 @@ services:
       - ${MA_DB_PORT}:3306
 
 
+  postgres-db:
+    image: postgres:15
+    container_name: posgres-db
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      POSTGRES_DB: ${PG_DB_NAME}
+      POSTGRES_USER: ${PG_DB_USER}
+      POSTGRES_PASSWORD: ${PG_DB_PSWD}
+    volumes:
+      - ./.volumes/pgdb/:/var/lib/postgresql/data
+    networks:
+      - devnet
+    ports:
+      - ${PG_DB_PORT}:5432
+
+
 networks:
   devnet:
     name: devnet
