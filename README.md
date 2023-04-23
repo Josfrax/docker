@@ -4,6 +4,7 @@ Local development environment.
 ## Services
 - Database:
     - Mariadb 10
+    - PostgresSQl 15
 
 
 ## Use enviroment:
