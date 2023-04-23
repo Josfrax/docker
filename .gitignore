@@ -1,5 +1,5 @@
 # Docker
-data/
+.volumes/
 
 # Enviroment
 .env

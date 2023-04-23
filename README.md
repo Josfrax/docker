@@ -3,7 +3,7 @@ Local development environment.
 
 ## Services
 - Database:
-    - Mariadb
+    - Mariadb 10
 
 
 ## Use enviroment:

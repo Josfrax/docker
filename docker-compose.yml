@@ -1,24 +1,25 @@
 version: '3.9'
 
 services:
-  mariadb:
-    image: mariadb
-    container_name: dev-db
+  maria-db:
+    image: mariadb:10
+    container_name: maria-db
     restart: unless-stopped
     env_file: .env
     environment:
-      MARIADB_DATABASE: ${DB_NAME}
-      MARIADB_USER: ${DB_USER}
-      MARIADB_PASSWORD: ${DB_PASSWD}
-      MARIADB_ROOT_PASSWORD: ${DB_PASSWD_ROOT}
-      MARIADB_INITDB_SKIP_TZINFO: ${DB_TZ}
+      MARIADB_DATABASE: ${MA_DB_NAME}
+      MARIADB_USER: ${MA_DB_USER}
+      MARIADB_PASSWORD: ${MA_DB_PASSWD}
+      MARIADB_ROOT_PASSWORD: ${MA_DB_PASSWD_ROOT}
+      MARIADB_INITDB_SKIP_TZINFO: ${MA_DB_TZ}
     volumes:
-      - ./data/:/var/lib/mysql:rw
+      - ./.volumes/madb/:/var/lib/mysql:rw
     networks:
       - devnet
     ports:
-      - 3306:3306
-    
+      - ${MA_DB_PORT}:3306
+
+
 networks:
   devnet:
     name: devnet
