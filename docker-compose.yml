@@ -36,7 +36,6 @@ services:
     ports:
       - ${PG_DB_PORT}:5432
 
-
 networks:
   devnet:
     name: devnet
